@@ -7,6 +7,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.novoda:bintray-release:0.3.4'
     }
 }
 
@@ -14,4 +15,14 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+ext {
+    userOrg = 'drkcore'
+    groupId = 'core.annotation'
+    uploadName = 'ContentViewAnnotation'
+    publishVersion = '1.0.0'
+    desc = 'A tiny annotation processing lib for getting ContentView layout id'
+    website = 'https://github.com/DrkCore/ContentViewAnnotation'
+    licences = ['Apache-2.0']
 }
