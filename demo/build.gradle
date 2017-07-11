@@ -16,4 +16,5 @@ android {
 dependencies {
     apt project(':compiler')
     compile project(':annotation')
+    compile 'com.android.support:support-v4:25.3.1'
 }
