@@ -1,4 +1,4 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: './maven.gradle'
 
 buildscript {
     repositories {
@@ -15,14 +15,4 @@ allprojects {
     repositories {
         jcenter()
     }
-}
-
-ext {
-    userOrg = 'drkcore'
-    groupId = 'core.annotation'
-    uploadName = 'ContentViewAnnotation'
-    publishVersion = '1.0.0'
-    desc = 'A tiny annotation processing lib for getting ContentView layout id'
-    website = 'https://github.com/DrkCore/ContentViewAnnotation'
-    licences = ['Apache-2.0']
 }

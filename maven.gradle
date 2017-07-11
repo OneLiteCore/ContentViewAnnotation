@@ -1,0 +1,12 @@
+ext {
+    userOrg = 'drkcore'
+    name = 'DrkCore'
+    contact = '178456643@qq.com'
+    groupId = 'core.annotation'
+    uploadName = 'ContentViewAnnotation'
+    publishVersion = '1.0.0'
+    desc = 'A tiny annotation processing lib for getting ContentView layout id'
+    website = 'https://github.com/DrkCore/ContentViewAnnotation'
+    gitUrl = 'https://github.com/DrkCore/ContentViewAnnotation.git'
+    licences = ['Apache-2.0']
+}
