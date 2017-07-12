@@ -2,7 +2,7 @@ ext {
     userOrg = 'drkcore'
     name = 'DrkCore'
     contact = '178456643@qq.com'
-    groupId = 'core.annotation'
+    groupId = 'core.mate'
     uploadName = 'ContentViewAnnotation'
     publishVersion = '1.0.0'
     desc = 'A tiny annotation processing lib for getting ContentView layout id'

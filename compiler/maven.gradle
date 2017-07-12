@@ -1,7 +1,7 @@
 apply plugin: 'bintray-release'
 
 publish {
-    artifactId = 'compiler'
+    artifactId = 'contentview-compiler'
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId
     uploadName = rootProject.uploadName
