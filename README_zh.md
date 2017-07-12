@@ -2,17 +2,15 @@
 
 [ ![Download](https://api.bintray.com/packages/drkcore/maven/ContentViewAnnotation/images/download.svg?version=1.0.0) ](https://bintray.com/drkcore/maven/ContentViewAnnotation/1.0.0/link)
 
-[中文版](./README_zh.md)
+ContentViewAnnotation 是用于查找 ContentView id 的编译时注解框架。
 
-ContentViewAnnotation is a tiny annotation processing lib for getting ContentView layout id.
+你可能使用过 [ButterKnife][1] 来处理视图和事件的注解，但你仍然需要一遍又一遍地在 Activity 和 Fragment 中编写 `setContentView(R.layout.activity_main)` 和 `return inflater.inflate(R.layout.fragment, container, fase)`，究其原因是因为缺少了 ContentView 注解。各种缘由可以点[这里](https://github.com/JakeWharton/butterknife/issues/8)进行了解。
 
-Many of you may use [ButterKnife][1] for field and method binding in Android app development. It's a powerful lib but you may be wondering why there is no ContentView annotation to help dealing with boilerplate code like `setContentView(R.layout.activity_main)` in Activity or `return inflater.inflate(R.layout.fragment, container, fase)` in fragment. Click [HERE](https://github.com/JakeWharton/butterknife/issues/8) to know.
+总之 ContentView 注解就是没有，以后也不可能会有。没有轮子就只能自己造，于是就有了你现在看到的这个框架。
 
-Yes, there is no ContentView annotation and won't be one in the future, so I decided to make my own one, and this is it.
+# 如何使用
 
-# How to use
-
-And add dependencies in module build.gradle:
+在 Module 的 build.gradle 文件中添加如下依赖:
 
 ```groovy
 dependencies {
@@ -21,7 +19,7 @@ dependencies {
 }
 ```
 
-Then add @ContentView annotation in your class:
+在类中使用 @ContentView 注解:
 
 ```java
 @ContentView(R.layout.activity_first)
@@ -29,7 +27,7 @@ public class FirstActivity extends BaseActivity {
 }
 ```
 
-Annotation processor will auto generate `ContentViews` class after build,  use it to get layout id and inflate it in BaseActivity:
+Build 后注解处理器会自动生成可以用于获取 layout id 的辅助类 `ContentViews` ，接着在你的 BaseActivity 实例化布局即可:
 
 ```java
 import core.annotation.view.ContentViews;
@@ -43,9 +41,9 @@ public abstract class BaseActivity extends FragmentActivity {
 }
 ```
 
-**TIP: ContentViewAnnotation is only designed for getting ContentView id, you are suggested to using this combile with [ButterKnife][1] for field and methon binding.**
+**如你所见，ContentViewAnnotation 只能用于获取 layout id，其他的视图和事件的注解依然推荐你使用 [ButterKnife][1]。**
 
-**Fork** or **STAR** me if this inspires you or just makes your code a little bit cleaner, ^_^.
+如果你觉得这个框架也是极好的，或者确实帮你省下了几行代码，别客气地给个 **STAR** 可好？
 
 # License
 
