@@ -4,7 +4,7 @@
 
 ContentViewAnnotation 是用于查找 ContentView id 的编译时注解框架。
 
-你可能使用过 [ButterKnife][1] 来处理视图和事件的注解，但你仍然需要一遍又一遍地在 Activity 和 Fragment 中编写 `setContentView(R.layout.activity_main)` 和 `return inflater.inflate(R.layout.fragment, container, fase)`，究其原因是因为缺少了 ContentView 注解。各种缘由可以点[这里](https://github.com/JakeWharton/butterknife/issues/8)进行了解。
+你可能使用过 [ButterKnife][1] 来处理视图和事件的注解，但你仍然需要一遍又一遍地在 Activity 和 Fragment 中编写 `setContentView(R.layout.activity_main)` 和 `return inflater.inflate(R.layout.fragment, container, fase)`，究其原因是因为缺少了 ContentView 注解。各中缘由可以点[这里](https://github.com/JakeWharton/butterknife/issues/8)进行了解。
 
 总之 ContentView 注解就是没有，以后也不可能会有。没有轮子就只能自己造，于是就有了你现在看到的这个框架。
 
