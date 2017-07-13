@@ -29,7 +29,9 @@ public class FirstActivity extends BaseActivity {
 }
 ```
 
-Annotation processor will auto generate `ContentViews` class after build,  use it to get layout id and inflate it in BaseActivity:
+Annotation processor will auto generate `ContentViews` class after build. Use `ContentViews.get(this)` to get layout id and inflate it in your BaseXXX.
+
+In BaseActivity:
 
 ```java
 import core.annotation.view.ContentViews;
@@ -43,7 +45,57 @@ public abstract class BaseActivity extends FragmentActivity {
 }
 ```
 
-**TIP: ContentViewAnnotation is only designed for getting ContentView id, you are suggested to using this combile with [ButterKnife][1] for field and methon binding.**
+In BaseFragment:
+
+```java
+public abstract class BaseFrag extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(ContentViews.get(this), container, false);
+    }
+}
+```
+
+# Performance
+
+Here is a sample of auto generated class `ContentViews`:
+
+```java
+public class ContentViews {
+
+    private static final Map<Class, Integer> map = new HashMap<>(10);
+
+    public static int get(Object obj) {
+        Integer id = map.get(obj.getClass());
+        if (id == null) {
+            Class clz = obj.getClass();
+            Class parent = clz;
+            while (id == null && (parent = parent.getSuperclass()) != null) {
+                id = map.get(parent);
+            }
+            if (id == null) {
+                id = 0;
+            }
+            map.put(clz, id);
+        }
+        return id;
+    }
+
+    static {
+        map.put(core.demo.app.MainActivity.class, 2130968616);
+        // Some more bind code...
+    }
+}
+```
+
+It nearly only costs o(1) time for finding in a small HashMap, so we can say that **IT DO NO HARM FOR PERFORMANCE**.
+
+# Tips
+
+- ContentViewAnnotation is only designed for getting ContentView id, you are suggested to using this combiles with [ButterKnife][1] for field and methon binding.
+- Be sure add at least one ContentView annotation and build your project when you setup and after clean, or there is no `ContentViews` class will be found.
+- Yes, it works totally ok after proguard even you don't add any rules to keep it.
 
 **Fork** or **STAR** me if this inspires you or just makes your code a little bit cleaner, ^_^.
 

@@ -41,11 +41,49 @@ public abstract class BaseActivity extends FragmentActivity {
 }
 ```
 
-**如你所见，ContentViewAnnotation 只能用于获取 layout id，其他的视图和事件的注解依然推荐你使用 [ButterKnife][1]。**
+# 性能
+
+自动生成的 `ContentViews` 类大致逻辑如下:
+
+```java
+public class ContentViews {
+
+    private static final Map<Class, Integer> map = new HashMap<>(10);
+
+    public static int get(Object obj) {
+        Integer id = map.get(obj.getClass());
+        if (id == null) {
+            Class clz = obj.getClass();
+            Class parent = clz;
+            while (id == null && (parent = parent.getSuperclass()) != null) {
+                id = map.get(parent);
+            }
+            if (id == null) {
+                id = 0;
+            }
+            map.put(clz, id);
+        }
+        return id;
+    }
+
+    static {
+        map.put(core.demo.app.MainActivity.class, 2130968616);
+        // Some more bind code...
+    }
+}
+```
+
+用于保存 id 值的 HashMap 体量非常小，此时可以认定其查找的时间复杂度是 o(1)，也就是说**本框架对性能 0 影响**。
+
+# 提示
+
+- 如你所见，ContentViewAnnotation 只能用于获取 layout id，建议配合视图和事件注解框架 [ButterKnife][1]  一同食用。
+- 第一次集成该框架时或者 clean 了工程之后，必须添加至少一个注解并执行 Build，否则你是找不到 `ContentViews` 类的。
+- 是的，无需任何配置该框架也能在混淆后干得好好的。
 
 如果你觉得这个框架也是极好的，或者确实帮你省下了几行代码，别客气地给个 **STAR** 可好？
 
-# License
+# 开源协议
 
         Copyright 2017 DrkCore
 
