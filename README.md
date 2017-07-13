@@ -89,7 +89,7 @@ public class ContentViews {
 }
 ```
 
-It nearly only costs o(1) time for finding in a small HashMap, so we can say that **IT DO NO HARM FOR PERFORMANCE**.
+It nearly only costs o(1) time for finding in a small HashMap, so we can say that **IT DOES NO HARM FOR PERFORMANCE**.
 
 # Tips
 
