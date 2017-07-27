@@ -93,7 +93,7 @@ It nearly only costs o(1) time for finding in a small HashMap, so we can say tha
 
 # Tips
 
-- ContentViewAnnotation is only designed for getting ContentView id, you are suggested to using this combiles with [ButterKnife][1] for field and methon binding.
+- ContentViewAnnotation is only designed for getting ContentView id, you are suggested to using this combines with [ButterKnife][1] for field and method binding.
 - Be sure add at least one ContentView annotation and build your project when you setup and after clean, or there is no `ContentViews` class will be found.
 - Yes, it works totally ok after proguard even you don't add any rules to keep it.
 
