@@ -3,15 +3,36 @@ apply from: './maven.gradle'
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.novoda:bintray-release:0.3.4'
+        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath 'com.novoda:bintray-release:0.9'
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
+}
+
+ext {
+    compileSdkVersion = 28
+    buildToolsVersion = '28.0.3'
+    minSdkVersion = 14
+    targetSdkVersion = 28
+
+    supportLibVersion = '28.0.0'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

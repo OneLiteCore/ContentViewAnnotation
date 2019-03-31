@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
     defaultConfig {
         applicationId "core.annotation.view"
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -14,6 +15,6 @@ android {
 
 dependencies {
     annotationProcessor project(':compiler')
-    compile project(':annotation')
-    compile 'com.android.support:support-v4:25.3.1'
+    implementation project(':annotation')
+    implementation "com.android.support:support-v4:$rootProject.supportLibVersion"
 }

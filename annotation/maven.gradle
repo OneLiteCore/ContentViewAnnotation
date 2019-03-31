@@ -6,7 +6,7 @@ publish {
     groupId = rootProject.groupId
     uploadName = rootProject.uploadName
     publishVersion = rootProject.publishVersion
-    desc = rootProject.description
+    desc = rootProject.desc
     website = rootProject.website
     licences = rootProject.licences
 }
