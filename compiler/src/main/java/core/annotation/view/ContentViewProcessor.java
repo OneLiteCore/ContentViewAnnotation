@@ -53,6 +53,7 @@ public class ContentViewProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         Map<String, Integer> map = new HashMap<>();
+
         Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(ContentView.class);
         for (Element element : elements) {
             TypeElement type = (TypeElement) element;
@@ -92,21 +93,8 @@ public class ContentViewProcessor extends AbstractProcessor {
 
         builder.append("    // Get ContentView layout id").append("\n");
         builder.append("    // You are supposed to call this method only in the main thread.").append("\n");
-        builder.append("    public static int get(Object obj) {").append("\n");
-        builder.append("        Integer id = map.get(obj.getClass());").append("\n");
-        builder.append("        if (id == null) {").append("\n");
-        builder.append("            Class clz = obj.getClass();").append("\n");
-        builder.append("            Class parent = clz;").append("\n");
-        builder.append("            while (id == null && (parent = parent.getSuperclass()) != null) {").append("\n");
-        builder.append("                id = map.get(parent);").append("\n");
-        builder.append("            }").append("\n");
-        builder.append("            if (id == null) {").append("\n");
-        builder.append("                id = 0;").append("\n");
-        builder.append("            }").append("\n");
-        builder.append("            // Cache result").append("\n");
-        builder.append("            map.put(clz, id);").append("\n");
-        builder.append("        }").append("\n");
-        builder.append("        return id;").append("\n");
+        builder.append("    public static Integer get(Object obj) {").append("\n");
+        builder.append("        return map.get(obj.getClass());").append("\n");
 
         builder.append("    }").append("\n\n");
 

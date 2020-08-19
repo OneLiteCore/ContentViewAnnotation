@@ -13,8 +13,9 @@ public class SecondActivity extends FirstActivity {
     protected void init() {
         // super.init();
 
-        info.setText("SecondActivity is extended from FirstActivity with on annotation,\n" +
-                "so ContentViews.get() will still return R.layout.activity_first");
+        info.setText("SecondActivity is extended from FirstActivity with out annotation, \n" +
+                "so ContentViews.get() will still return its parent annotated layout, \n" +
+                "which is R.layout.activity_first");
 
         btn.setText("Click me to start ThirdActivity");
         btn.setOnClickListener(new View.OnClickListener() {
