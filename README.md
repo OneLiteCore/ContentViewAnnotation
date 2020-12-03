@@ -99,27 +99,15 @@ Here is a sample of auto generated class `ContentViews`:
 ```java
 public class ContentViews {
 
-    private static final Map<Class, Integer> map = new HashMap<>(10);
-
-    public static int get(Object obj) {
-        Integer id = map.get(obj.getClass());
-        if (id == null) {
-            Class clz = obj.getClass();
-            Class parent = clz;
-            while (id == null && (parent = parent.getSuperclass()) != null) {
-                id = map.get(parent);
-            }
-            if (id == null) {
-                id = 0;
-            }
-            map.put(clz, id);
-        }
-        return id;
+    public static Integer get(Object obj) {
+        return map.get(obj.getClass());
     }
+
+    private static final Map<Class, Integer> map = new HashMap<>();
 
     static {
         map.put(core.demo.app.MainActivity.class, 2130968616);
-        // Some more bind code...
+        // Some more binding code...
     }
 }
 ```
