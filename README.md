@@ -1,6 +1,6 @@
 # Deprecated
 
-This library is no longer maintained anymore.
+This library is no longer maintained.
 
 It was developed to make [ButterKnife][1] a more completed one since there is no ContentView binding feature within it, but now the one has deprecated itself due to the releasement of ViewBinding.
 
