@@ -1,3 +1,38 @@
+# Deprecated
+
+This library is no longer maintained anymore.
+
+It was developed to make [ButterKnife][1] a more completed one since there is no ContentView binding feature within it, but now the one has deprecated itself due to the releasement of ViewBinding.
+
+What's more, the resource ID will be non-final in the soon future, which will make it not suitable to be a value to placed at annotation.
+
+But don't worry, with the power of Kotlin you can achieve the same effection by just adding a overridable Int val in you BaseActivity. Like this:
+
+```kotlin
+// Declare a super activity class like this
+open class BaseActivity : AppCompatActivity() {
+
+    @LayoutRes
+    open val layoutRes: Int = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (layoutRes != 0) {
+            setContentView(layoutRes)
+        }
+    }
+}
+
+// Override the val in your child class
+class MainActivity : BaseActivity{
+    
+    override val layoutRes: Int = R.layout.activity_main
+
+}
+```
+
+So long and may you have a good day.
+
 # ContentViewAnnotation
 
 [ ![Download](https://api.bintray.com/packages/drkcore/maven/ContentViewAnnotation/images/download.svg?version=1.0.0) ](https://bintray.com/drkcore/maven/ContentViewAnnotation/1.0.0/link)
