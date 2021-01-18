@@ -2,12 +2,12 @@
 
 该项目已经不再维护。
 
-这个项目最初是为了弥补 [ButterKnife][1] 没有绑定 ContentView 功能而开发的，但在 ViewBinding 发布之后后者本身停止了维护，同时资源 ID 在不久的将来不再被 final 修饰也变得不适合放在注解上了，综上这个库也差不多走到了尽头。
+这个项目最初是为了弥补 [ButterKnife][1] 没有绑定 ContentView 功能而开发的，但在 ViewBinding 发布之后其本身停止了维护，同时资源 ID 在不久的将来不再被 final 修饰也变得不适合放在注解上了，综上这个库也差不多走到了尽头。
 
 如今已经是“Kotlin first” 的时代了，通过使用 Kotlin 可覆盖属性的特性你可以很容易地实现同样的效果：
 
 ```kotlin
-// 定义一个 Activity 的父类，你肯定有一个这东西的吧？
+// 定义一个 Activity 的父类，你肯定有一个这玩意儿的，对吧？
 open class BaseActivity : AppCompatActivity() {
 
     @LayoutRes
